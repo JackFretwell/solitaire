@@ -1,0 +1,58 @@
+.card {
+    width:100px;
+    height:120px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.card.face-up {
+    background: white;
+    color: black;
+}
+
+.card.face-down {
+    background: navy;
+    border: 2px solid #333;
+}
+
+.card.hearts, .card.diamonds {
+    color: red;
+}
+
+.card.spades, .card.clubs {
+    color: black;
+}
+
+.pile {
+    width:80px;
+    height:120px;
+    border: 1px dashed #999;
+    position: relative;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    background: green;
+    gap:40px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+#top-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#tableau { 
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
