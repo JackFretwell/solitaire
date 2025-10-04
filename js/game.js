@@ -1,5 +1,6 @@
 import Card from './card.js';
 import Pile from './pile.js';
+import createCardElement from './ui.js';
 
 export default class Game {
     start() {
@@ -73,6 +74,29 @@ export default class Game {
             stock: stock,
             waste: waste
         };
+    }
+
+    renderGame(tableauPiles, foundationPiles, stock, waste) {
+        for(let i = 0; i < tableauPiles.length; i++) {
+            const pileDiv = document.getElementById("tableau-" + i);
+            pileDiv.innerHTML = "";
+
+            for(let j = 0; j < tableauPiles[i].cards.length; j++){
+                const card = tableauPiles[i].cards[j];
+                const cardElement = createCardElement(card);
+                cardElement.style.top = (j * 20) + "px";
+                pileDiv.appendChild(cardElement);
+
+            }
+        }
+        const pileDiv = document.getElementById("stock");
+        pileDiv.innerHTML = "";
+
+        for(let i = 0; i < stock.cards.length; i++) {
+            const card = stock.cards[i];
+            const cardElement = createCardElement(card);
+            pileDiv.appendChild(cardElement);
+        }
     }
     
 }

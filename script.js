@@ -9,3 +9,4 @@ const shuffledDeck = game.shuffleDeck(deck);
 const piles = game.dealCards(deck);
 //console.log(piles.stock);
 //console.log(deck);
+game.renderGame(piles.tableau, piles.foundations, piles.stock, piles.waste);
