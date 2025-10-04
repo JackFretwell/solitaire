@@ -4,4 +4,6 @@ const game = new Game();
 game.start();
 const deck = game.deckBuilder();
 const shuffledDeck = game.shuffleDeck(deck);
-console.log(shuffledDeck);
+//console.log(shuffledDeck);
+const piles = game.createPiles();
+console.log(piles.waste);
