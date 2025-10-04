@@ -8,7 +8,7 @@ export default class Game {
 
     deckBuilder() {
         const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
-        const values = ['A', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+        const values = ['A', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Q', 'K'];
 
         const deck = [];
 
@@ -35,34 +35,44 @@ export default class Game {
         return deck;
     }
 
-    createPiles() {
+    dealCards(deck) {
+
         const tableauPiles = [];
         const foundationPiles = [];
-        const stockPile = [];
-        const wastePile = [];
 
         for(let i = 0; i < 7; i++) {
             let tableau = new Pile("tableau");
             tableauPiles.push(tableau);
+
+            for(let j = 0; j <= i; j++) {
+                let card = deck.pop();
+                tableau.addCard(card);
+            }
+
+            tableau.topCard().orientation = "face-up";
         }
 
+        let stock = new Pile("stock");
+        let deckLength = deck.length;
         
+        for(let i = 0; i < deckLength; i++) {
+            let card = deck.pop();
+            stock.addCard(card);
+        }
+
         for(let i = 0; i < 4; i++) {
             let foundation = new Pile("foundations");
             foundationPiles.push(foundation);
         }
 
-        let stock = new Pile("stock");
-        stockPile.push(stock);
-
         let waste = new Pile("waste");
-        wastePile.push(waste);
 
         return {
             tableau: tableauPiles,
             foundations: foundationPiles,
-            stock: stockPile,
-            waste: wastePile
+            stock: stock,
+            waste: waste
         };
     }
+    
 }
